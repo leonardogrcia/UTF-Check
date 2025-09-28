@@ -1,0 +1,12 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div class="checkbox-group" formArrayName="options">
+      @for (opt of options; track $index) {
+        <label>
+            <input type="checkbox" [formControlName]="$index" />
+            {{ opt }}
+        </label>
+      }
+    </div>
+  </form>
+</div>

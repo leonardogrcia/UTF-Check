@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+$button-color: #a3bd31;
+$primary-color: #474a4a;
+
+html {
+  font-family: 'Montserrat';
+  color: $primary-color;
+}

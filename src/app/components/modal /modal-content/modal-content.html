@@ -1,0 +1,14 @@
+<div class="container">
+  <header>
+    <h4>Validação</h4>
+    <p>{{ percentage }}</p>
+  </header>
+  <div class="content">
+    <h5>Selecione:</h5>
+    <div class="checkboxes-container">
+      <app-validation-checkboxes
+        (percentageChange)="updatePercentage($event)"
+      ></app-validation-checkboxes>
+    </div>
+  </div>
+</div>

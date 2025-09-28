@@ -1,0 +1,9 @@
+@if (isVisible) {
+<div class="modal-overlay" (click)="close()">
+  <div class="container" (click)="$event.stopPropagation()">
+    <app-modal-header [title]="modalTitle" (closeModal)="close()"></app-modal-header>
+    <app-modal-content [title]="modalTitle"></app-modal-content>
+    <app-modal-footer area="$$$"></app-modal-footer>
+  </div>
+</div>
+}
