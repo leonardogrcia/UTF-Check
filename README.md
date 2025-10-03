@@ -40,7 +40,7 @@
 - [x] => item concluido  
 
 **RA1 - Prototipar e projetar interfaces gráficas de usuário, considerando princípios de usabilidade e experiência do usuário.**
-- [ ] ID1: Desenvolver protótipos de interfaces que demonstram compreensão das diretrizes de usabilidade.
+- [x] ID1: Desenvolver protótipos de interfaces que demonstram compreensão das diretrizes de usabilidade.
 - [ ] ID2: Projetar interfaces responsivas que se adaptam a diferentes tamanhos de tela.
 
 **RA2 - Criar e reutilizar componentes em frameworks frontend, desenvolvendo interfaces modulares, responsivas e estilizadas.**
