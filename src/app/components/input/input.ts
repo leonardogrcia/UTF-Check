@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, FormsModule], // <-- adiciona FormsModule
   templateUrl: './input.html',
-  styleUrl: './input.scss'
+  styleUrls: ['./input.scss']
 })
-export class Input {
-
+export class AppInputComponent {
+  @Input() label: string = '';
+  @Input() icon: string = '';
+  @Input() type: string = 'text';
+  @Input() value: string = '';
 }

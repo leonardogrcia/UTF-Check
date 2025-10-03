@@ -1,1 +1,9 @@
-<p>input works!</p>
+<main>
+  <div class="input-wrapper">
+  <label>{{ label }}</label>
+  <div class="input-container">
+    <i [class]="'icon ' + icon"></i>
+    <input [type]="type" [(ngModel)]="value" />
+  </div>
+</div>
+</main>
