@@ -1,7 +1,7 @@
 <main class="w-80 h-screen bg-white flex flex-col items-center justify-start gap-4">
-  <div class="h-15 w-full bg-gray-light flex items-center justify-start border-b border-gray-400">
+  <div class="h-15 w-full bg-gray-light flex items-center justify-start">
     <h2 class="text-2xl font-bold ml-3">UTF-Check</h2>
   </div>
-  <app-tab text="Geral"></app-tab>
-  <app-tab text="Perfil"></app-tab>
+  <a routerLink="/general"><app-tab text="Geral"></app-tab></a>
+  <a routerLink="/profile"><app-tab text="Perfil"></app-tab></a>
 </main>
