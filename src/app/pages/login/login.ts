@@ -7,6 +7,7 @@ import { AppButtonComponent } from "../../components/buttons/button/button";
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   templateUrl: './login.html',
   imports: [AppInputComponent, AppButtonComponent]
 })
@@ -18,7 +19,7 @@ export class Login {
   constructor(
     private auth: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   async login() {
     const isValid = await this.auth.login(this.username, this.password);

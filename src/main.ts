@@ -4,24 +4,31 @@ import { App } from './app/app';
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';
 
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC_-i8sgUc9OcgZqdrqak52GkwGOU_P_k4",
-  authDomain: "utfcheckapi.firebaseapp.com",
-  projectId: "utfcheckapi",
-  storageBucket: "utfcheckapi.firebasestorage.app",
-  messagingSenderId: "764300684295",
-  appId: "1:764300684295:web:9f567fe670d69ebb22cea2",
-  measurementId: "G-5ZLCJT39LC"
+  apiKey: import.meta.env.NG_APP_FIREBASE_API_KEY,
+    authDomain: import.meta.env.NG_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.NG_APP_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.NG_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.NG_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.NG_APP_FIREBASE_APP_ID,
+    measurementId: import.meta.env.NG_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-bootstrapApplication(App, appConfigComponent)
-  .catch((err) => console.error(err));
+bootstrapApplication(App, {
+  ...appConfigComponent,
+  providers: [
+    ...(appConfigComponent.providers ?? []),
+    provideRouter(routes)
+  ]
+})
+.catch(err => console.error(err));
+  
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
