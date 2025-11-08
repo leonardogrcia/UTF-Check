@@ -19,13 +19,12 @@ import { Card } from './components/card/card';
   // 2. Array de 'imports' COMBINADO com todos os itens
   imports: [
     RouterOutlet,
-    Sidebar,
-    Header,
-    Modal,
-    Card
-  ],
+    CardMainComponent,
+    AppInputComponent,
+    AppButtonComponent
+],
   
-  templateUrl: './app.html', 
+  templateUrl: './app.component.html', 
   styleUrl: './app.component.scss',
 })
 
