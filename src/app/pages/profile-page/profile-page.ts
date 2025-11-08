@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { TabStateService } from '../../../../shared/tab-state.service';
+import { TabStateService } from '../../shared/tab-state.service';
 
 @Component({
-  selector: 'app-general-page',
+  selector: 'app-profile-page',
   imports: [],
-  templateUrl: './general-page.html',
-  styleUrl: './general-page.scss',
+  templateUrl: './profile-page.html',
+  styleUrl: './profile-page.scss',
 })
-export class GeneralPage implements OnInit {
+export class ProfilePage implements OnInit {
   title = '';
 
   constructor(private tabState: TabStateService) {}
