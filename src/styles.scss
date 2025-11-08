@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'tailwindcss';
+
+@theme {
+  // typography mobile
+
+  --text-h1-mbl: 3rem;
+  --text-h2-mbl: 2.25rem;
+  --text-h3-mbl: 1.875rem;
+  --text-p-mbl: 1.125rem;
+
+  // colors
+
+  --color-background-gray: #ebebeb;
+  --color-gray-light: #f6f6f6;
+  --color-text-primary: #474a4a;
+  --color-gray-lighter: #fafafa;
+  --color-offwhite: #fffafa;
+}
