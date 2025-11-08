@@ -1,9 +1,8 @@
-@import '../../../../../styles.scss';
+@use '../../../../../styles' as *;
 
 .checkbox-group {
   display: flex;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
+  flex-wrap: wrap;  font-size: 0.875rem;
 }
 
 label {
