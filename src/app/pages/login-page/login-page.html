@@ -1,11 +1,9 @@
 <div class="w-full h-screen bg-neutral-200 flex items-center justify-center p-4">
-
   <div class="bg-white w-full max-w-5xl h-[500px] rounded-lg shadow-lg flex overflow-hidden">
-
     <!-- Left image -->
     <div class="w-1/2 h-full">
-      <img 
-        src="/public/campus.png"
+      <img
+        src=""
         alt="Campus UTFPR Guarapuava"
         class="w-full h-full object-cover"
       />
@@ -13,38 +11,22 @@
 
     <!-- Right side form -->
     <div class="w-1/2 h-full flex flex-col p-12">
-
       <div>
         <h2 class="text-2xl font-bold">Login</h2>
         <p class="text-sm text-gray-500 -mt-1">UTF Check</p>
       </div>
       <div class="mt-6 flex flex-col gap-4">
+        <app-input label="E-mail" icon="fa fa-envelope" [(value)]="email"> </app-input>
 
-        <app-input 
-          label="Usuário" 
-          icon="fa fa-user"
-          [(value)]="username">
+        <app-input label="Senha" icon="fa fa-lock" type="password" [(value)]="password">
         </app-input>
 
-        <app-input 
-          label="Senha"
-          icon="fa fa-lock"
-          type="password"
-          [(value)]="password">
-        </app-input>
-
-        <app-button 
-          label="LOGIN"
-          color="primary">
-        </app-button>
-
+        <app-button label="LOGIN" color="primary" (click)="onLogin()"> </app-button>
       </div>
 
       <p class="text-xs text-gray-400 mt-auto text-center">
         © 2025. Desenvolvido por estudantes de SI.
       </p>
-
     </div>
   </div>
-
 </div>

@@ -1,15 +1,20 @@
-import { Injectable, Inject } from '@angular/core';
-import * as auth_1 from "firebase/auth"; 
+import { Injectable, inject } from '@angular/core';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(@Inject('FIRE_AUTH') private auth: auth_1.Auth) {}
+  private auth = inject(Auth);
+  private router = inject(Router);
 
-  login(email: string, password: string) {
-    return auth_1.signInWithEmailAndPassword(this.auth, email, password);
-  }
-
-  get currentUser() {
-    return this.auth.currentUser;
+  async login(email: string, password: string) {
+    try {
+      const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+      console.log('Usuário logado:', userCredential.user);
+      this.router.navigate(['/dashbord']);
+    } catch (error: any) {
+      console.error('Erro ao logar:', error.code);
+      throw error;
+    }
   }
 }
