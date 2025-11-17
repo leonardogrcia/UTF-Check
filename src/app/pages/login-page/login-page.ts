@@ -11,13 +11,14 @@ import { AppButtonComponent } from "../../components/buttons/button/button";
   imports: [AppInputComponent, AppButtonComponent],
 })
 export class LoginPage {
-  email = '';
+  username = ''; 
   password = '';
 
   constructor(private authService: AuthService) { }
 
   onLogin() {
-    console.log('Tentando login:', this.email, this.password);
-    this.authService.login(this.email, this.password);
+    console.log('Tentando login:', this.username, this.password);
+    // Certifique-se que seu authService aceita (username, password)
+    this.authService.login(this.username, this.password);
   }
 }
