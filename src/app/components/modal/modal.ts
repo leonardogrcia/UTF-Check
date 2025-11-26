@@ -8,11 +8,10 @@ import { ModalFooter } from './modal-footer/modal-footer';
   standalone: true,
   imports: [ModalHeader, ModalContent, ModalFooter],
   templateUrl: './modal.html',
-  styleUrl: './modal.scss',
+  styleUrls: ['./modal.scss'],
 })
 export class Modal {
   @Input() modalTitle = '';
-  @Input() isVisible = false;
 
   @Output() closeModal = new EventEmitter<void>();
 

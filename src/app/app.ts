@@ -8,7 +8,7 @@ import { Sidebar } from "./components/sidebar/sidebar";
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [RouterModule, Header, Sidebar],
+  imports: [RouterModule],
 })
 export class App {
   title = signal('UTF-Check');

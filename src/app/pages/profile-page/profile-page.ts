@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TabStateService } from '../../shared/tab-state.service';
+import { Sidebar } from "../../components/sidebar/sidebar";
 
 @Component({
   selector: 'app-profile-page',
-  imports: [],
+  imports: [Sidebar],
   templateUrl: './profile-page.html',
   styleUrl: './profile-page.scss',
 })

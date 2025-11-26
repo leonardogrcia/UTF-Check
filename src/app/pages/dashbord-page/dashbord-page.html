@@ -1,1 +1,104 @@
-<p>dashbord-page works!</p>
+<!-- Sidebar + Main Layout -->
+<div class="flex h-screen w-full bg-gray-100">
+  <!-- SIDEBAR -->
+  <app-sidebar class="w-64 bg-white shadow-md" (sidebarClick)="openModalFromSidebar($event)">
+  </app-sidebar>
+
+  <!-- MAIN AREA -->
+  <main class="flex-1 p-6">
+    <!-- HEADER -->
+    <div class="w-full">
+      <!-- Topo / Breadcrumb -->
+      <div class="w-full bg-gray-100 py-2 px-4">
+        <div class="flex items-center gap-2 text-sm text-gray-500">
+          <i class="fa-solid fa-house text-gray-500"></i>
+          <span>Dashbord</span>
+        </div>
+      </div>
+
+      <!-- Card principal -->
+      <div class="w-full px-4 mt-3">
+        <div class="bg-white shadow-sm rounded-lg border border-gray-200 p-4">
+          <div class="flex items-center gap-2 text-gray-700 font-semibold">
+            <i class="fa-solid fa-chart-bar text-gray-600"></i>
+            <span>Área de Ckecklist</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID DAS CATEGORIAS -->
+    <div class="w-full h-full flex items-start justify-center mt-40">
+      <div class="grid grid-cols-4 gap-6 rounded-xl shadow text-white">
+        <app-card-main
+          title="Higiene & Limpeza"
+          icon="fa-solid fa-hand-sparkles"
+          status="done"
+          (clicked)="openModal()"
+        >
+        </app-card-main>
+
+        <app-card-main
+          title="Alimentos"
+          icon="fa-solid fa-bread-slice"
+          status="partial"
+          (clicked)="openModal()"
+        >
+        </app-card-main>
+
+        <app-card-main
+          title="Cardápio"
+          icon="fa-solid fa-book-open"
+          status="not-started"
+          (clicked)="openModal()"
+        >
+        </app-card-main>
+
+        <app-card-main
+          title="Operação"
+          icon="fa-solid fa-diagram-project"
+          status="not-started"
+          (clicked)="openModal()"
+        >
+        </app-card-main>
+
+        <app-card-main
+          title="Atendimento"
+          icon="fa-solid fa-bell-concierge"
+          status="not-started"
+          (clicked)="openModal()"
+        >
+        </app-card-main>
+
+        <app-card-main
+          title="Estrutura"
+          icon="fa-solid fa-toolbox"
+          status="not-started"
+          (clicked)="openModal()"
+        >
+        </app-card-main>
+
+        <app-card-main
+          title="Equipamentos"
+          icon="fa-solid fa-utensils"
+          status="not-started"
+          (clicked)="openModal()"
+        >
+        </app-card-main>
+
+        <app-card-main
+          title="Verificação"
+          icon="fa-solid fa-file-circle-check"
+          status="not-started"
+          (clicked)="openModal()"
+        >
+        </app-card-main>
+      </div>
+    </div>
+
+    <!-- MODAL FORA DA GRID -->
+    @if (showModal) {
+    <app-modal modalTitle="Detalhes" (closeModal)="closeModal()"> </app-modal>
+    }
+  </main>
+</div>
