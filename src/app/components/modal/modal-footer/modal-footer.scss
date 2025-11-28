@@ -1,0 +1,43 @@
+
+
+
+p {
+  font-size: 0.9rem;
+}
+
+button {
+  display: flex;
+  background-color: #a3bd31;
+  color: white;
+  font-weight: bold;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  justify-items: space-between;
+  align-self: flex-end;
+}
+
+button:hover {
+  background-color: #94a92c;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button > p,
+i {
+  padding: 5px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container {
+  width: 30rem;
+  height: 6rem;
+}

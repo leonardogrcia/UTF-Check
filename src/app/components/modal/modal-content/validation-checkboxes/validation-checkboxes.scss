@@ -1,0 +1,47 @@
+@use '../../../../../styles' as *;
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;  font-size: 0.875rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  border: 1px solid $primary-color;
+  margin: 0rem 0.5rem 0.5rem 0rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  min-width: 7.5rem;
+}
+
+label:hover {
+  border-color: $button-color;
+  cursor: pointer;
+}
+
+input[type='checkbox'] {
+  appearance: none; /* remove estilo padrão */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #666;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  margin-right: 0.5rem;
+}
+
+input[type='checkbox']:checked {
+  border-color: $button-color;
+  background-color: $button-color;
+  &::after {
+    content: '✔';
+    color: white;
+    font-size: 10px;
+    position: absolute;
+    left: 25%;
+  }
+}

@@ -1,12 +1,28 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { Header } from "./components/header/header";
+import { Sidebar } from "./components/sidebar/sidebar";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [RouterModule],
 })
 export class App {
-  protected readonly title = signal('UTF-Check');
+  title = signal('UTF-Check');
+  password = '';
+  username = '';
+  isModalVisible = false;
+  modalTitle = '';
+
+  openModal(content: string) {
+    this.modalTitle = content;
+    this.isModalVisible = true;
+  }
+
+  closeModal() {
+    this.isModalVisible = false;
+  }
 }

@@ -1,0 +1,29 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 15rem;
+  width: 17rem;
+  background-color: rgb(66, 255, 192);
+  border-radius: 1rem;
+  color: black;
+  text-wrap: wrap;
+}
+
+i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.card:hover {
+  background-color: rgb(69, 232, 150);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

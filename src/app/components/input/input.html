@@ -1,0 +1,14 @@
+<div class="w-full flex flex-col gap-2">
+  <label class="font-semibold text-gray-700">{{ label }}</label>
+
+  <div class="flex items-center gap-3 border border-gray-300 rounded-lg px-3 py-2 bg-white">
+    <i *ngIf="icon" class="{{ icon }} text-gray-500"></i>
+
+    <input
+      [type]="type"
+      [value]="value"
+      (input)="onInput($event)"
+      class="w-full outline-none bg-transparent text-gray-800"
+    />
+  </div>
+</div>

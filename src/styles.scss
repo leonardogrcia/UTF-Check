@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// 1. Variáveis SCSS (definidas no topo, escopo global)
+$button-color: #a3bd31;
+$primary-color: #474a4a;
+
+// 2. Variáveis CSS (definidas dentro do :root)
+:root {
+  // typography mobile
+  --text-h1-mbl: 3rem;
+  --text-h2-mbl: 2.25rem;
+  --text-h3-mbl: 1.875rem;
+  --text-p-mbl: 1.125rem;
+
+  // colors
+  --color-background-gray: #ebebeb;
+  --color-gray-light: #f6f6f6;
+  --color-text-primary: #474a4a;
+  --color-gray-lighter: #fafafa;
+  --color-offwhite: #fffafa;
+}
+
+// 3. Regras de estilo globais
+html {
+  font-family: 'Montserrat';
+  color: $primary-color; 
+}
