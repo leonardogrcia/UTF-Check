@@ -14,6 +14,7 @@ export class AuthService {
       this.router.navigate(['/dashbord']);
     } catch (error: any) {
       console.error('Erro ao logar:', error.code);
+      
       throw error;
     }
   }

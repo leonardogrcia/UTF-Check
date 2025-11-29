@@ -1,5 +1,6 @@
 <div class="flex h-screen w-full bg-gray-100">
-  <app-sidebar class="w-64 bg-white shadow-md hidden sm:block" (sidebarClick)="openModalFromSidebar($event)">
+  <app-sidebar class="w-64 bg-white shadow-md hidden sm:block"
+    (sidebarClick)="openModalFromSidebar($event)">
   </app-sidebar>
 
   <main class="flex-1 p-4 sm:p-6 overflow-y-auto">
@@ -24,19 +25,21 @@
     <div class="w-full flex justify-center mt-6 md:mt-12">
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-6xl text-white">
-        
-        <app-card-main 
-          *ngFor="let card of cards" 
-          [title]="card.title" 
-          [icon]="card.icon" 
-          [status]="card.status"
-          (clicked)="openModal()">
-        </app-card-main>
+
+        @for (card of cards; track card) {
+          <app-card-main
+            [title]="card.title"
+            [icon]="card.icon"
+            [status]="card.status"
+            (clicked)="openModal()">
+          </app-card-main>
+        }
+
       </div>
     </div>
 
     @if (showModal) {
-    <app-modal modalTitle="Detalhes" (closeModal)="closeModal()"> </app-modal>
+      <app-modal modalTitle="Detalhes" (closeModal)="closeModal()"> </app-modal>
     }
   </main>
 </div>

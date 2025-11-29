@@ -27,15 +27,13 @@ export class DashbordPage {
 
 
 cards: CardData[] = [
-    { title: 'Higiene & Limpeza', icon: 'fa-solid fa-hand-sparkles', status: 'not-started' },
-    { title: 'Alimentos', icon: 'fa-solid fa-bread-slice', status: 'partial' },
-    { title: 'Cardápio', icon: 'fa-solid fa-book-open', status: 'not-started' },
-    { title: 'Operação', icon: 'fa-solid fa-diagram-project', status: 'not-started' },
-    { title: 'Atendimento', icon: 'fa-solid fa-bell-concierge', status: 'not-started' },
-    { title: 'Estrutura', icon: 'fa-solid fa-toolbox', status: 'not-started' },
-    { title: 'Equipamentos', icon: 'fa-solid fa-utensils', status: 'not-started' },
-    { title: 'Verificação', icon: 'fa-solid fa-file-circle-check', status: 'not-started' },
-  ];
+  { id: 'higiene_limpeza', title: 'Higiene & Limpeza', icon: 'fa-solid fa-hand-sparkles', status: 'done' },
+  { id: 'alimentos_cardapio', title: 'alimentos_cardapio', icon: 'fa-solid fa-book-open', status: 'partial' },
+  { id: 'operacao_atendimento', title: 'operacao_atendimento', icon: 'fa-solid fa-bell-concierge', status: 'not-started' },
+  { id: 'estrutura_equipamentos', title: 'estrutura_equipamentos', icon: 'fa-solid fa-utensils', status: 'not-started' },
+  { id: 'verificacao', title: 'Verificação', icon: 'fa-solid fa-file-circle-check', status: 'not-started' },
+];
+
 
   showModal = false;
   modalTitle: string | undefined;
