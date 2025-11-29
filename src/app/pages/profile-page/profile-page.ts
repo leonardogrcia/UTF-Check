@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { TabStateService } from '../../shared/tab-state.service';
-import { Sidebar } from "../../components/sidebar/sidebar";
+import { SupervisorService } from '../../services/supervisor.service';
+import { Supervisor } from './interface.supervisor';
+import { SidebarComponent } from "../../components/sidebar/sidebar";
+
 
 @Component({
-  selector: 'app-profile-page',
-  imports: [Sidebar],
+  selector: 'app-profile',
   templateUrl: './profile-page.html',
-  styleUrl: './profile-page.scss',
+  imports: [SidebarComponent]
 })
-export class ProfilePage implements OnInit {
-  title = '';
+export class ProfileComponent implements OnInit {
 
-  constructor(private tabState: TabStateService) {}
+  supervisor!: Supervisor;
 
-  ngOnInit() {
-    this.tabState.currentTabText$.subscribe((text) => {
-      this.title = text;
-    });
+  constructor(private supervisorService: SupervisorService) {}
+
+  ngOnInit(): void {
+    this.supervisorService.getSupervisor()
+      .subscribe((data: any) => this.supervisor = data);
+  }
+
+  editarPerfil() {
+    alert('Em desenvolvimento! 😄');
   }
 }
