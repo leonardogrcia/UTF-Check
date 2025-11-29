@@ -1,39 +1,23 @@
-<main class="p-4 flex flex-col gap-3">
-  <h2 class="text-xl font-bold ml-1">UTF-Check</h2>
+<aside class="w-64 bg-white shadow-md p-4 h-full hidden md:block overflow-y-auto">
+  <main class="flex flex-col gap-3">
+    <h2 class="text-xl font-bold ml-1 text-gray-800">UTF-Check</h2>
 
-  <!-- Geral -->
-  <a routerLink="/dashbord"><app-tab text="Geral"></app-tab></a>
-  <a routerLink="/profile"><app-tab text="Perfil"></app-tab></a>
-  <!-- Modal Items -->
-  <button (click)="openModalFromSidebar('Higiene & Limpeza')">
-    <app-tab text="Higiene & Limpeza"></app-tab>
-  </button>
+    @for (item of sidebarItems; track item.text) { 
+      
+      @if (!item.isModal) {
+        <a [routerLink]="item.link" 
+           routerLinkActive="font-semibold text-blue-600 bg-blue-50 rounded-lg">
+          <app-tab [text]="item.text"></app-tab>
+        </a>
+      } 
+      
+      @if (item.isModal) {
+        <button (click)="openModalFromSidebar(item.text)" 
+                class="w-full text-left">
+          <app-tab [text]="item.text"></app-tab>
+        </button>
+      }
 
-  <button (click)="openModalFromSidebar('Alimentos')">
-    <app-tab text="Alimentos"></app-tab>
-  </button>
-
-  <button (click)="openModalFromSidebar('Cardápio')">
-    <app-tab text="Cardápio"></app-tab>
-  </button>
-
-  <button (click)="openModalFromSidebar('Operação')">
-    <app-tab text="Operação"></app-tab>
-  </button>
-
-  <button (click)="openModalFromSidebar('Atendimento')">
-    <app-tab text="Atendimento"></app-tab>
-  </button>
-
-  <button (click)="openModalFromSidebar('Estrutura')">
-    <app-tab text="Estrutura"></app-tab>
-  </button>
-
-  <button (click)="openModalFromSidebar('Equipamentos')">
-    <app-tab text="Equipamentos"></app-tab>
-  </button>
-
-  <button (click)="openModalFromSidebar('Verificação')">
-    <app-tab text="Verificação"></app-tab>
-  </button>
-</main>
+    }
+  </main>
+</aside>
