@@ -1,14 +1,37 @@
 <div class="container">
   <header>
-    <h4>Validação</h4>
+    <h4>Validacao</h4>
     <p>{{ percentage }}</p>
   </header>
   <div class="content">
     <h5>Selecione:</h5>
-    <div class="checkboxes-container">
-      <app-validation-checkboxes
-        (percentageChange)="updatePercentage($event)"
-      ></app-validation-checkboxes>
-    </div>
+    @if (loading) {
+      <p>Carregando checklist...</p>
+    } @else {
+      @if ((items || []).length === 0) {
+        <p>Nenhum item encontrado para este checklist.</p>
+      } @else {
+        <div class="checkboxes-container">
+          <app-validation-checkboxes
+            [options]="items"
+            (progressChange)="updatePercentage($event)"
+          ></app-validation-checkboxes>
+        </div>
+      }
+    }
   </div>
+
+  @if (attachments.length) {
+    <div class="attachments">
+      <h5>Fotos:</h5>
+      <div class="thumbs">
+        @for (att of attachments; track att.url) {
+          <a [href]="att.url" target="_blank" rel="noopener noreferrer" class="thumb">
+            <img [src]="att.url" [alt]="att.name" />
+            <span>{{ att.name }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  }
 </div>

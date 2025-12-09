@@ -1,104 +1,67 @@
-<!-- Sidebar + Main Layout -->
 <div class="flex h-screen w-full bg-gray-100">
-  <!-- SIDEBAR -->
-  <app-sidebar class="w-64 bg-white shadow-md" (sidebarClick)="openModalFromSidebar($event)">
+  <app-sidebar class="w-64 bg-white shadow-md hidden sm:block"
+    (sidebarClick)="openModalFromSidebar($event)">
   </app-sidebar>
 
-  <!-- MAIN AREA -->
-  <main class="flex-1 p-6">
-    <!-- HEADER -->
+  <main class="flex-1 p-4 sm:p-6 overflow-y-auto">
     <div class="w-full">
-      <!-- Topo / Breadcrumb -->
-      <div class="w-full bg-gray-100 py-2 px-4">
-        <div class="flex items-center gap-2 text-sm text-gray-500">
-          <i class="fa-solid fa-house text-gray-500"></i>
-          <span>Dashbord</span>
+      <div class="w-full bg-gray-100 py-2 px-4 rounded-md">
+        <div class="flex items-center justify-between gap-2 text-sm text-gray-500">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-house text-gray-500"></i>
+            <span>Dashbord</span>
+          </div>
+          <button
+            class="text-xs px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-200 transition"
+            (click)="logout()">
+            Deslogar
+          </button>
         </div>
       </div>
 
-      <!-- Card principal -->
-      <div class="w-full px-4 mt-3">
-        <div class="bg-white shadow-sm rounded-lg border border-gray-200 p-4">
+      <div class="w-full mt-3">
+        <div class="bg-white shadow-sm rounded-lg border border-gray-200 p-4 flex items-center justify-between gap-4">
           <div class="flex items-center gap-2 text-gray-700 font-semibold">
             <i class="fa-solid fa-chart-bar text-gray-600"></i>
-            <span>Área de Ckecklist</span>
+            <span>Area de Checklist</span>
           </div>
+          <button
+            class="px-4 py-2 rounded-md text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition"
+            [disabled]="syncing"
+            (click)="syncCardsWithTrello()">
+            {{ syncing ? 'Sincronizando...' : 'Sincronizar com Trello' }}
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- GRID DAS CATEGORIAS -->
-    <div class="w-full h-full flex items-start justify-center mt-40">
-      <div class="grid grid-cols-4 gap-6 rounded-xl shadow text-white">
-        <app-card-main
-          title="Higiene & Limpeza"
-          icon="fa-solid fa-hand-sparkles"
-          status="done"
-          (clicked)="openModal()"
-        >
-        </app-card-main>
+    <div class="w-full flex justify-center mt-6 md:mt-12">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6 w-full max-w-7xl text-white px-4">
 
-        <app-card-main
-          title="Alimentos"
-          icon="fa-solid fa-bread-slice"
-          status="partial"
-          (clicked)="openModal()"
-        >
-        </app-card-main>
+        @for (card of cards; track card) {
+          <app-card-main
+            [title]="card.title"
+            [icon]="card.icon"
+            [status]="card.status"
+            (clicked)="openModal(card)">
+          </app-card-main>
+        }
 
-        <app-card-main
-          title="Cardápio"
-          icon="fa-solid fa-book-open"
-          status="not-started"
-          (clicked)="openModal()"
-        >
-        </app-card-main>
-
-        <app-card-main
-          title="Operação"
-          icon="fa-solid fa-diagram-project"
-          status="not-started"
-          (clicked)="openModal()"
-        >
-        </app-card-main>
-
-        <app-card-main
-          title="Atendimento"
-          icon="fa-solid fa-bell-concierge"
-          status="not-started"
-          (clicked)="openModal()"
-        >
-        </app-card-main>
-
-        <app-card-main
-          title="Estrutura"
-          icon="fa-solid fa-toolbox"
-          status="not-started"
-          (clicked)="openModal()"
-        >
-        </app-card-main>
-
-        <app-card-main
-          title="Equipamentos"
-          icon="fa-solid fa-utensils"
-          status="not-started"
-          (clicked)="openModal()"
-        >
-        </app-card-main>
-
-        <app-card-main
-          title="Verificação"
-          icon="fa-solid fa-file-circle-check"
-          status="not-started"
-          (clicked)="openModal()"
-        >
-        </app-card-main>
       </div>
     </div>
 
-    <!-- MODAL FORA DA GRID -->
     @if (showModal) {
-    <app-modal modalTitle="Detalhes" (closeModal)="closeModal()"> </app-modal>
+      <app-modal
+        [modalTitle]="modalTitle || 'Detalhes'"
+        [items]="checklistOptions"
+        [loading]="loadingChecklist"
+        [uploading]="uploading"
+        [attachments]="currentAttachments"
+        (closeModal)="closeModal()"
+        (progressChange)="onProgressChange($event)"
+        (fileSelected)="onFileSelected($event)">
+      </app-modal>
     }
   </main>
 </div>

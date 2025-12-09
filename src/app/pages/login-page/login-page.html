@@ -1,51 +1,61 @@
-<div class="login-wrapper w-full h-screen bg-gray-100 flex items-center justify-center p-4">
+<div class="login-wrapper min-h-screen w-full bg-gray-100 flex items-center justify-center p-4">
   
-  <div class="login-card bg-white w-full max-w-6xl h-[600px] rounded-xl shadow-2xl flex overflow-hidden">
-    
-    <div class="login-image hidden md:block w-1/2 h-full relative bg-gray-200">
+  <div class="login-card bg-white w-full max-w-6xl min-h-[450px] md:min-h-[500px]
+              rounded-2xl shadow-xl flex flex-col md:flex-row overflow-hidden">
+
+    <!-- Left Side Image -->
+    <div class="hidden md:flex md:w-1/2 relative">
       <img
-        src="../../../assets/campus.png" 
+        src="../../../assets/campus.png"
         alt="Campus UTFPR Guarapuava"
         class="w-full h-full object-cover"
       />
+      <div class="absolute inset-0 bg-black/20"></div>
     </div>
 
-    <div class="login-form w-full md:w-1/2 h-full flex flex-col relative p-12 md:p-20 justify-center">
-      
-      <div class="mb-10">
-        <h2 class="text-5xl font-bold text-gray-900 mb-2">Login</h2>
-        <h3 class="text-xl font-bold text-gray-800">UTF Check</h3>
+    <!-- Right Side Form -->
+    <div class="login-form w-full md:w-1/2 flex flex-col
+                p-8 sm:p-12 lg:p-20 justify-center gap-6">
+
+      <div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">Login</h2>
+        <h3 class="text-lg sm:text-xl font-medium text-gray-700">UTF Check</h3>
       </div>
 
-      <div class="flex flex-col gap-6 w-full max-w-md">
-        <app-input 
-            label="Usuário" 
-            icon="fa fa-user" 
-            [(value)]="username"> 
+      <!-- Inputs -->
+      <div class="flex flex-col gap-6 w-full max-w-sm">
+        <app-input
+          label="Usuário"
+          icon="fa fa-user"
+          [(value)]="username">
         </app-input>
 
-        <app-input 
-            label="Senha" 
-            icon="fa fa-lock" 
-            type="password" 
-            [(value)]="password">
+        <app-input
+          label="Senha"
+          icon="fa fa-lock"
+          type="password"
+          [(value)]="password">
         </app-input>
 
-        <div class="mt-4">
-            <app-button 
-                label="LOGIN" 
-                color="primary" 
-                class="w-full block"
-                (click)="onLogin()"> 
-            </app-button>
-        </div>
+        @if (loginError) {
+          <c-alert 
+            color="danger"
+            class="p-2 text-sm text-center">
+            {{ loginError }}
+          </c-alert>
+        }
+
+        <app-button
+          label="LOGIN"
+          color="primary"
+          class="w-full"
+          (click)="onLogin()">
+        </app-button>
       </div>
 
-      <div class="absolute bottom-6 left-0 w-full text-center">
-        <p class="text-xs text-gray-400 font-medium">
-          © 2025. Developed by Students.
-        </p>
-      </div>
+      <p class="text-xs text-gray-400 mt-auto text-center">
+        © 2025. Developed by Students.
+      </p>
 
     </div>
   </div>

@@ -1,20 +1,33 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { Tab } from "./tab/tab";
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Tab } from './tab/tab';
+import { RouterModule } from '@angular/router';
+
+interface SidebarItem {
+  text: string;
+  link?: string;
+  isModal: boolean;
+}
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.html',
-  styleUrl: './sidebar.scss',
-  imports: [Tab],
+  styleUrls: ['./sidebar.scss'],
+  imports: [Tab, RouterModule]
 })
-export class Sidebar {
-
+export class SidebarComponent {
   @Output() sidebarClick = new EventEmitter<string>();
 
-  private router = inject(Router);
+  sidebarItems: SidebarItem[] = [
+    { text: 'Geral', link: '/dashbord', isModal: false },
+    { text: 'Perfil', link: '/profile', isModal: false },
+    { text: 'Higiene & Limpeza', isModal: true },
+    { text: 'Alimentos e Cardapio', isModal: true },
+    { text: 'Operacao & Atendimento', isModal: true },
+    { text: 'Estrutura & Equipamentos', isModal: true },
+    { text: 'Verificacao', isModal: true },
+  ];
 
-  openModalFromSidebar(title: string) {
-    this.sidebarClick.emit(title);
+  openModalFromSidebar(text: string): void {
+    this.sidebarClick.emit(text);
   }
 }

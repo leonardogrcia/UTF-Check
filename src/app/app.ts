@@ -1,14 +1,17 @@
 import { Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Header } from "./components/header/header";
-import { Sidebar } from "./components/sidebar/sidebar";
+import { AlertModule } from '@coreui/angular';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [RouterModule],
+  imports: [
+    RouterModule,
+    AlertModule
+    
+  ],
 })
 export class App {
   title = signal('UTF-Check');
