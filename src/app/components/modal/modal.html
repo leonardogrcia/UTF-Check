@@ -6,9 +6,17 @@
     </app-modal-header>
 
     <app-modal-content 
-      [title]="modalTitle">
+      [title]="modalTitle"
+      [items]="items"
+      [loading]="loading"
+      [attachments]="attachments"
+      (progressChange)="handleProgress($event)">
     </app-modal-content>
 
-    <app-modal-footer area="$$$"></app-modal-footer>
+    <app-modal-footer
+      area="$$$"
+      [uploading]="uploading"
+      (uploadFile)="handleFileSelected($event)">
+    </app-modal-footer>
   </div>
 </div>

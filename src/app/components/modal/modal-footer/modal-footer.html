@@ -1,9 +1,10 @@
 <div class="container">
   <div class="items">
-    <p>INSIRA A FOTO PARA A VALIDAÇÃO DA SEGUINTE ÁREA: {{ area }}</p>
-    <button>
+    <p>INSIRA A FOTO PARA A VALIDACAO DA SEGUINTE AREA: {{ area }}</p>
+    <label class="upload-btn">
       <i class="fa-solid fa-file-import"></i>
-      <p>Upload</p>
-    </button>
+      <p>{{ uploading ? 'Enviando...' : 'Upload' }}</p>
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" [disabled]="uploading" hidden />
+    </label>
   </div>
 </div>
