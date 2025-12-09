@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-footer',
@@ -8,4 +8,16 @@ import { Component, Input } from '@angular/core';
 })
 export class ModalFooter {
   @Input() area = 'cozinha';
+  @Input() uploading = false;
+
+  @Output() uploadFile = new EventEmitter<File>();
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files && input.files[0];
+    if (file) {
+      this.uploadFile.emit(file);
+      input.value = '';
+    }
+  }
 }

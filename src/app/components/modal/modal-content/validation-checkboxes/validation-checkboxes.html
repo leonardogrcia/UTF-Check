@@ -4,7 +4,7 @@
       @for (opt of options; track $index) {
         <label>
             <input type="checkbox" [formControlName]="$index" />
-            {{ opt }}
+            {{ opt.name }}
         </label>
       }
     </div>
