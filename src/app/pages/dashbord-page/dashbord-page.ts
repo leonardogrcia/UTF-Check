@@ -6,6 +6,7 @@ import { SidebarComponent } from '../../components/sidebar/sidebar';
 import { TrelloBackendService } from '../../services/trello.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { CardData } from './card-data.interface';
 
@@ -71,7 +72,12 @@ cards: CardData[] = [
     ]
   };
 
-  constructor(private trello: TrelloBackendService, private authService: AuthService, private router: Router) {}
+  constructor(
+    private trello: TrelloBackendService,
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.trello.getMyBoards().subscribe({
@@ -105,10 +111,12 @@ cards: CardData[] = [
             }
           });
         }
+        this.toastr.success('Sincronizacao com Trello concluida.', 'Sucesso');
         this.syncing = false;
       },
       error: (err) => {
         console.error('Erro ao sincronizar Trello:', err);
+        this.toastr.error('Erro ao sincronizar com Trello.', 'Erro');
         this.syncing = false;
       }
     });
@@ -216,11 +224,16 @@ cards: CardData[] = [
   }
 
   private updateCardStatus(cardId: string, selected: number, total: number) {
+    const previous = this.cards.find((c) => c.id === cardId)?.status;
     const status: CardData['status'] =
       total === 0 || selected === 0 ? 'not-started' :
       selected === total ? 'done' : 'partial';
 
     this.cards = this.cards.map((c) => c.id === cardId ? { ...c, status } : c);
+    if (status === 'done' && previous !== 'done') {
+      const title = this.cards.find((c) => c.id === cardId)?.title || 'Checklist';
+      this.toastr.success(`${title} concluido.`, 'Checklist completo');
+    }
   }
 
   showModal = false;

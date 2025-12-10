@@ -11,4 +11,8 @@ import { CommonModule } from '@angular/common';
 export class AppButtonComponent {
   @Input() label: string = 'Enviar';
   @Input() color: 'primary' | 'secondary' | 'danger' = 'primary';
+  @Input() loading = false;
+  @Input() disabled = false;
+  @Input() loadingLabel?: string;
+  @Input() type: 'button' | 'submit' = 'button';
 }

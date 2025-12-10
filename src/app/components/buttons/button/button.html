@@ -1,5 +1,13 @@
 <main>
-  <button [ngClass]="color">
-    {{ label }}
+  <button
+    [ngClass]="[color, (disabled || loading) ? 'is-disabled' : '']"
+    [disabled]="disabled || loading"
+    [attr.type]="type">
+    @if (loading) {
+      <span class="spinner" aria-hidden="true"></span>
+      <span class="loading-text">{{ loadingLabel || 'Carregando...' }}</span>
+    } @else {
+      {{ label }}
+    }
   </button>
 </main>

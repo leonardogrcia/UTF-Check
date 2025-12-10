@@ -1,9 +1,11 @@
 
 import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { provideFirebaseApp, initializeApp as angularInitializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth as angularGetAuth } from '@angular/fire/auth';
 import { provideHttpClient } from '@angular/common/http';
+import { provideToastr } from 'ngx-toastr';
 
 import { App } from './app/app';
 import { routes } from './app/app.routes';
@@ -38,6 +40,8 @@ bootstrapApplication(App, {
     provideRouter(routes),
     provideHttpClient(),
     provideFirebaseApp(() => angularInitializeApp(firebaseConfig)),
-    provideAuth(() => angularGetAuth())
+    provideAuth(() => angularGetAuth()),
+    provideAnimations(),
+    provideToastr()
   ]
 });
